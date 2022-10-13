@@ -27,8 +27,38 @@ echo "This is stage1.2"'''
     }
 
     stage('stage2') {
+      parallel {
+        stage('stage2') {
+          steps {
+            sh 'echo "This is stage2"'
+            sh 'echo "stage2"'
+          }
+        }
+
+        stage('stage2.1') {
+          steps {
+            sh 'echo "stage2.1"'
+          }
+        }
+
+        stage('stage2.2') {
+          steps {
+            sh 'echo "stage2.2"'
+          }
+        }
+
+        stage('stage2.3') {
+          steps {
+            sh 'echo " hi stage2.3"'
+          }
+        }
+
+      }
+    }
+
+    stage('stage3') {
       steps {
-        sh 'echo "This is stage2"'
+        sh 'echo "this is stage3"'
       }
     }
 
